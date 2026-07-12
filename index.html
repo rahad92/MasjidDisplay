@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,13 +8,12 @@
   <title>Masjid Display</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
   <main class="screen">
     <header class="header">
-      <div>
-        <p class="eyebrow">MASJID DISPLAY</p>
-        <h1 id="mosqueName">Islamic Center of Delaware County</h1>
-        <p id="mosqueSubtitle" class="subtitle">Serving the community</p>
+      <div class="logo-container">
+        <img id="mosqueLogo" src="assets/logo.png" alt="Islamic Center of Delaware County" />
       </div>
 
       <div class="clock-panel">
@@ -24,57 +24,66 @@
     </header>
 
     <section class="content-grid">
-      <section class="prayer-card">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">TODAY'S SCHEDULE</p>
-            <h2>Prayer Times</h2>
-          </div>
-          <div id="status" class="status">Connecting…</div>
-        </div>
 
-        <div class="prayer-table">
-          <div class="prayer-row table-head">
-            <div>Prayer</div>
-            <div>Adhan</div>
-            <div>Iqamah</div>
-          </div>
+      <section class="display-stage">
+        <section id="prayerSlide" class="stage-slide active">
+          <section class="prayer-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">TODAY'S SCHEDULE</p>
+                <h2>Prayer Times</h2>
+              </div>
+              <div id="status" class="status">Connecting…</div>
+            </div>
 
-          <div class="prayer-row" data-prayer="Fajr">
-            <div class="prayer-name">Fajr</div>
-            <div id="Fajr-adhan">--:--</div>
-            <div id="Fajr-iqamah">--:--</div>
-          </div>
+            <div class="prayer-table">
+              <div class="prayer-row table-head">
+                <div>Prayer</div>
+                <div>Adhan</div>
+                <div>Iqamah</div>
+              </div>
 
-          <div class="prayer-row" data-prayer="Dhuhr">
-            <div class="prayer-name">Dhuhr</div>
-            <div id="Dhuhr-adhan">--:--</div>
-            <div id="Dhuhr-iqamah">--:--</div>
-          </div>
+              <div class="prayer-row" data-prayer="Fajr">
+                <div class="prayer-name">Fajr</div>
+                <div id="Fajr-adhan">--:--</div>
+                <div id="Fajr-iqamah">--:--</div>
+              </div>
 
-          <div class="prayer-row" data-prayer="Asr">
-            <div class="prayer-name">Asr</div>
-            <div id="Asr-adhan">--:--</div>
-            <div id="Asr-iqamah">--:--</div>
-          </div>
+              <div class="prayer-row" data-prayer="Dhuhr">
+                <div class="prayer-name">Dhuhr</div>
+                <div id="Dhuhr-adhan">--:--</div>
+                <div id="Dhuhr-iqamah">--:--</div>
+              </div>
 
-          <div class="prayer-row" data-prayer="Maghrib">
-            <div class="prayer-name">Maghrib</div>
-            <div id="Maghrib-adhan">--:--</div>
-            <div id="Maghrib-iqamah">--:--</div>
-          </div>
+              <div class="prayer-row" data-prayer="Asr">
+                <div class="prayer-name">Asr</div>
+                <div id="Asr-adhan">--:--</div>
+                <div id="Asr-iqamah">--:--</div>
+              </div>
 
-          <div class="prayer-row" data-prayer="Isha">
-            <div class="prayer-name">Isha</div>
-            <div id="Isha-adhan">--:--</div>
-            <div id="Isha-iqamah">--:--</div>
-          </div>
-        </div>
+              <div class="prayer-row" data-prayer="Maghrib">
+                <div class="prayer-name">Maghrib</div>
+                <div id="Maghrib-adhan">--:--</div>
+                <div id="Maghrib-iqamah">--:--</div>
+              </div>
 
-        <div class="jummah">
-          <span>Jumu'ah</span>
-          <strong id="Jumuah-iqamah">--:--</strong>
-        </div>
+              <div class="prayer-row" data-prayer="Isha">
+                <div class="prayer-name">Isha</div>
+                <div id="Isha-adhan">--:--</div>
+                <div id="Isha-iqamah">--:--</div>
+              </div>
+            </div>
+
+            <div class="jummah">
+              <span>Jumu'ah</span>
+              <strong id="Jumuah-iqamah">--:--</strong>
+            </div>
+          </section>
+        </section>
+
+        <section id="flyerSlide" class="stage-slide flyer-slide">
+          <img id="flyerImage" src="" alt="Mosque announcement" />
+        </section>
       </section>
 
       <aside class="side-column">
@@ -86,10 +95,24 @@
           <div id="countdown" class="countdown">--:--:--</div>
         </section>
 
-        <section class="info-card">
-          <p class="eyebrow">SUNRISE</p>
-          <div id="Sunrise-adhan" class="sunrise-time">--:--</div>
-          <p class="small-copy">Prayer times update automatically from the mosque's live schedule.</p>
+        <section class="info-card sun-card">
+          <div class="sun-times">
+            <div class="sun-time-item">
+              <p class="eyebrow">SUNRISE</p>
+              <div id="Sunrise-adhan" class="sun-time-value">--:--</div>
+            </div>
+
+            <div class="sun-divider"></div>
+
+            <div class="sun-time-item">
+              <p class="eyebrow">SUNSET</p>
+              <div id="Sunset-adhan" class="sun-time-value">--:--</div>
+            </div>
+          </div>
+
+          <p class="small-copy">
+            Times update automatically from the live schedule.
+          </p>
         </section>
       </aside>
     </section>
@@ -104,4 +127,5 @@
 
   <script type="module" src="js/app.js"></script>
 </body>
+
 </html>

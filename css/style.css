@@ -1,15 +1,26 @@
 :root {
-  --bg: #061713;
-  --panel: rgba(13, 42, 34, 0.92);
-  --panel-2: rgba(19, 56, 46, 0.92);
-  --line: rgba(255, 255, 255, 0.12);
-  --text: #f6fbf8;
-  --muted: #b9cdc5;
-  --accent: #d7b76a;
-  --accent-soft: rgba(215, 183, 106, 0.16);
-  --success: #78d6a0;
-  --danger: #ff9a8d;
-  --shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+  --bg: #070b0a;
+
+  --panel: rgba(22, 29, 27, 0.96);
+  --panel-2: rgba(30, 39, 36, 0.96);
+
+  --line: rgba(0, 166, 147, 0.28);
+
+  --text: #f5f7f6;
+  --muted: #b6c4c0;
+
+  --accent: #00a693;
+  --accent-strong: #00b9a4;
+  --accent-soft: rgba(0, 166, 147, 0.16);
+
+  --gold: #ddb459;
+  --gold-light: #ecd082;
+  --gold-soft: rgba(221, 180, 89, 0.16);
+
+  --success: #66d6ac;
+  --danger: #ff9287;
+
+  --shadow: 0 18px 55px rgba(0, 0, 0, 0.42);
 }
 
 * {
@@ -29,9 +40,22 @@ body {
 
 body {
   background:
-    radial-gradient(circle at 15% 5%, rgba(33, 113, 83, 0.28), transparent 35%),
-    radial-gradient(circle at 90% 0%, rgba(215, 183, 106, 0.12), transparent 30%),
-    linear-gradient(145deg, #061713, #0a211b 58%, #071812);
+    radial-gradient(
+      circle at 12% 5%,
+      rgba(0, 166, 147, 0.18),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 88% 0%,
+      rgba(221, 180, 89, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(
+      145deg,
+      #050807,
+      #0c1210 55%,
+      #07100d
+    );
 }
 
 .screen {
@@ -46,8 +70,9 @@ body {
 .header {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 30px;
+  gap: 22px;
   align-items: center;
+  padding-block: 2px;
 }
 
 h1 {
@@ -64,12 +89,28 @@ h2 {
 
 .eyebrow {
   margin: 0;
-  color: var(--accent);
-  font-size: clamp(12px, 0.9vw, 18px);
+  color: var(--gold);
+  font-size: clamp(12px, 0.9vw, 32px);
   font-weight: 800;
   letter-spacing: 0.16em;
 }
-
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
+  padding: 8px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(221, 180, 89, 0.35);
+}
+#mosqueLogo {
+  display: block;
+  width: auto;
+  height: clamp(70px, 6vw, 110px);
+  max-width: min(46vw, 600px);
+  object-fit: contain;
+}
 .subtitle,
 .date-line,
 .hijri-line,
@@ -87,7 +128,7 @@ h2 {
 }
 
 .clock {
-  font-size: clamp(46px, 5.4vw, 108px);
+  font-size: clamp(54px, 5.3vw, 118px);
   font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 0.95;
@@ -107,16 +148,24 @@ h2 {
 .content-grid {
   min-height: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.75fr);
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.72fr);
   gap: clamp(16px, 1.5vw, 28px);
+  align-items: stretch;
 }
 
 .prayer-card,
 .next-card,
-.info-card {
+.info-card,
+.flyer-slide {
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--panel), rgba(7, 28, 22, 0.95));
-  border-radius: 24px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(29, 38, 35, 0.97),
+      rgba(13, 19, 17, 0.98)
+    );
+
+  border-radius: 22px;
   box-shadow: var(--shadow);
 }
 
@@ -125,7 +174,8 @@ h2 {
   padding: clamp(18px, 1.6vw, 32px);
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 14px;
+  gap: 16px;
+  min-height: 100%;
 }
 
 .section-heading {
@@ -152,6 +202,7 @@ h2 {
   min-height: 0;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
+  border-color: rgba(0, 166, 147, 0.28);
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
@@ -163,8 +214,9 @@ h2 {
   align-items: center;
   padding: 0 clamp(16px, 1.6vw, 30px);
   border-bottom: 1px solid var(--line);
-  font-size: clamp(26px, 2.4vw, 46px);
-  font-weight: 700;
+  border-bottom-color: rgba(0, 166, 147, 0.18);
+  font-size: clamp(26px, 2.4vw, 52px);
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
   transition: background 180ms ease, transform 180ms ease;
 }
@@ -174,32 +226,32 @@ h2 {
 }
 
 .table-head {
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(0, 166, 147, 0.08);
+  color: var(--gold-light);
   font-size: clamp(14px, 1.1vw, 21px);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
 .prayer-name {
-  color: var(--accent);
+  color: var(--accent-strong);
+  font-weight: 800;
 }
 
 .prayer-row.next {
-  background: linear-gradient(90deg, var(--accent-soft), rgba(215, 183, 106, 0.05));
-  box-shadow: inset 6px 0 0 var(--accent);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 166, 147, 0.22),
+      rgba(0, 166, 147, 0.06)
+    );
+
+  box-shadow:
+    inset 7px 0 0 var(--accent);
 }
 
 .prayer-row.next::after {
-  content: "NEXT";
-  justify-self: end;
-  color: var(--accent);
-  font-size: clamp(10px, 0.75vw, 15px);
-  letter-spacing: 0.12em;
-}
-
-.prayer-row.next {
-  grid-template-columns: 1.3fr 1fr 1fr auto;
+  color: var(--gold-light);
 }
 
 .jummah {
@@ -208,15 +260,86 @@ h2 {
   align-items: center;
   padding: clamp(12px, 1vw, 18px) clamp(16px, 1.6vw, 30px);
   border-radius: 16px;
-  background: rgba(215, 183, 106, 0.1);
-  border: 1px solid rgba(215, 183, 106, 0.28);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(221, 180, 89, 0.18),
+      rgba(221, 180, 89, 0.07)
+    );
+
+  border: 1px solid rgba(221, 180, 89, 0.42);
   font-size: clamp(18px, 1.6vw, 30px);
 }
+.jummah span {
+  color: var(--gold-light);
+}
+.jummah strong {
+  color: var(--text);
+}
+.display-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 24px;
+}
 
+.stage-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 500ms ease, visibility 500ms ease;
+}
+
+.stage-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Make the prayer display fill the complete slideshow section */
+#prayerSlide {
+  display: block;
+}
+
+#prayerSlide .prayer-card {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+}
+
+/* Make the flyer area fill the complete section */
+.flyer-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #071812;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.flyer-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 24px;
+}
 .side-column {
   min-height: 0;
   display: grid;
-  grid-template-rows: 1.35fr 0.65fr;
+  grid-template-rows: 1fr 0.85fr;
   gap: clamp(16px, 1.5vw, 28px);
 }
 
@@ -263,13 +386,49 @@ h2 {
   justify-content: center;
 }
 
+.next-card h2,
 .sunrise-time {
-  margin-top: 8px;
-  color: var(--accent);
-  font-size: clamp(38px, 4vw, 78px);
-  font-weight: 800;
+  color: var(--accent-strong);
+}
+.sun-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.sun-times {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: center;
+  gap: clamp(14px, 1.4vw, 26px);
+}
+
+.sun-time-item {
+  min-width: 0;
+  text-align: center;
+}
+
+.sun-divider {
+  width: 1px;
+  height: 75%;
+  min-height: 70px;
+  background: rgba(0, 166, 147, 0.3);
+}
+
+.sun-time-value {
+  margin-top: 8px;
+  color: var(--accent-strong);
+  font-size: clamp(27px, 2.8vw, 64px);
+  font-weight: 800;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.sun-card .small-copy {
+  margin-top: clamp(12px, 1.2vw, 20px);
+  text-align: center;
+}
 .small-copy {
   margin: 10px 0 0;
   font-size: clamp(13px, 1vw, 20px);
@@ -284,7 +443,8 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(6, 23, 19, 0.88);
+  border-color: rgba(0, 166, 147, 0.32);
+  background: rgba(7, 12, 10, 0.94);
 }
 
 .ticker-label {
@@ -293,7 +453,7 @@ h2 {
   place-items: center;
   padding: 0 22px;
   background: var(--accent);
-  color: #162017;
+  color: #04110e;
   font-size: clamp(12px, 0.9vw, 17px);
   font-weight: 900;
   letter-spacing: 0.1em;
