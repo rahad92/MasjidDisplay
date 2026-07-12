@@ -90,7 +90,7 @@ h2 {
 .eyebrow {
   margin: 0;
   color: var(--gold);
-  font-size: clamp(12px, 0.9vw, 32px);
+  font-size: clamp(12px, 0.9vw, 18px);
   font-weight: 800;
   letter-spacing: 0.16em;
 }
@@ -128,7 +128,7 @@ h2 {
 }
 
 .clock {
-  font-size: clamp(54px, 5.3vw, 118px);
+  font-size: clamp(46px, 5.4vw, 108px);
   font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 0.95;
@@ -215,8 +215,8 @@ h2 {
   padding: 0 clamp(16px, 1.6vw, 30px);
   border-bottom: 1px solid var(--line);
   border-bottom-color: rgba(0, 166, 147, 0.18);
-  font-size: clamp(26px, 2.4vw, 52px);
-  font-weight: 800;
+  font-size: clamp(26px, 2.4vw, 46px);
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
   transition: background 180ms ease, transform 180ms ease;
 }
