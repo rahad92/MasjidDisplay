@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071c16" />
+  <title>Masjid Display</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="screen">
+    <header class="header">
+      <div>
+        <p class="eyebrow">MASJID DISPLAY</p>
+        <h1 id="mosqueName">Islamic Center of Delaware County</h1>
+        <p id="mosqueSubtitle" class="subtitle">Serving the community</p>
+      </div>
+
+      <div class="clock-panel">
+        <div id="clock" class="clock">--:--:--</div>
+        <div id="gregorianDate" class="date-line">Loading date…</div>
+        <div id="hijriDate" class="hijri-line"></div>
+      </div>
+    </header>
+
+    <section class="content-grid">
+      <section class="prayer-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">TODAY'S SCHEDULE</p>
+            <h2>Prayer Times</h2>
+          </div>
+          <div id="status" class="status">Connecting…</div>
+        </div>
+
+        <div class="prayer-table">
+          <div class="prayer-row table-head">
+            <div>Prayer</div>
+            <div>Adhan</div>
+            <div>Iqamah</div>
+          </div>
+
+          <div class="prayer-row" data-prayer="Fajr">
+            <div class="prayer-name">Fajr</div>
+            <div id="Fajr-adhan">--:--</div>
+            <div id="Fajr-iqamah">--:--</div>
+          </div>
+
+          <div class="prayer-row" data-prayer="Dhuhr">
+            <div class="prayer-name">Dhuhr</div>
+            <div id="Dhuhr-adhan">--:--</div>
+            <div id="Dhuhr-iqamah">--:--</div>
+          </div>
+
+          <div class="prayer-row" data-prayer="Asr">
+            <div class="prayer-name">Asr</div>
+            <div id="Asr-adhan">--:--</div>
+            <div id="Asr-iqamah">--:--</div>
+          </div>
+
+          <div class="prayer-row" data-prayer="Maghrib">
+            <div class="prayer-name">Maghrib</div>
+            <div id="Maghrib-adhan">--:--</div>
+            <div id="Maghrib-iqamah">--:--</div>
+          </div>
+
+          <div class="prayer-row" data-prayer="Isha">
+            <div class="prayer-name">Isha</div>
+            <div id="Isha-adhan">--:--</div>
+            <div id="Isha-iqamah">--:--</div>
+          </div>
+        </div>
+
+        <div class="jummah">
+          <span>Jumu'ah</span>
+          <strong id="Jumuah-iqamah">--:--</strong>
+        </div>
+      </section>
+
+      <aside class="side-column">
+        <section class="next-card">
+          <p class="eyebrow">NEXT PRAYER</p>
+          <h2 id="nextPrayer">Loading…</h2>
+          <div id="nextPrayerTime" class="next-time">--:--</div>
+          <p id="countdownLabel" class="countdown-label">Starts in</p>
+          <div id="countdown" class="countdown">--:--:--</div>
+        </section>
+
+        <section class="info-card">
+          <p class="eyebrow">SUNRISE</p>
+          <div id="Sunrise-adhan" class="sunrise-time">--:--</div>
+          <p class="small-copy">Prayer times update automatically from the mosque's live schedule.</p>
+        </section>
+      </aside>
+    </section>
+
+    <footer class="ticker-wrap">
+      <div class="ticker-label">ANNOUNCEMENTS</div>
+      <div class="ticker-window">
+        <div id="ticker" class="ticker">Welcome to Islamic Center of Delaware County</div>
+      </div>
+    </footer>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

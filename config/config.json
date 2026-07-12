@@ -1,0 +1,12 @@
+{
+  "mosqueName": "Islamic Center of Delaware County",
+  "mosqueSubtitle": "Serving the Havertown community",
+  "city": "Havertown",
+  "country": "USA",
+  "timezone": "America/New_York",
+  "timeFormat": "12h",
+  "refreshMinutes": 5,
+  "iqamahApiUrl": "https://icdc.skyhub.pk/api/v1/iqamah/get",
+  "adhanApiBaseUrl": "https://api.aladhan.com/v1/timingsByCity",
+  "calculationMethod": 2
+}

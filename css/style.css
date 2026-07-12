@@ -1,0 +1,344 @@
+:root {
+  --bg: #061713;
+  --panel: rgba(13, 42, 34, 0.92);
+  --panel-2: rgba(19, 56, 46, 0.92);
+  --line: rgba(255, 255, 255, 0.12);
+  --text: #f6fbf8;
+  --muted: #b9cdc5;
+  --accent: #d7b76a;
+  --accent-soft: rgba(215, 183, 106, 0.16);
+  --success: #78d6a0;
+  --danger: #ff9a8d;
+  --shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 5%, rgba(33, 113, 83, 0.28), transparent 35%),
+    radial-gradient(circle at 90% 0%, rgba(215, 183, 106, 0.12), transparent 30%),
+    linear-gradient(145deg, #061713, #0a211b 58%, #071812);
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  padding: clamp(20px, 2vw, 42px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: clamp(16px, 1.5vw, 28px);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 30px;
+  align-items: center;
+}
+
+h1 {
+  margin: 4px 0 6px;
+  font-size: clamp(30px, 3.1vw, 62px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  margin: 4px 0 0;
+  font-size: clamp(26px, 2.2vw, 44px);
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-size: clamp(12px, 0.9vw, 18px);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.subtitle,
+.date-line,
+.hijri-line,
+.small-copy {
+  color: var(--muted);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: clamp(15px, 1.15vw, 23px);
+}
+
+.clock-panel {
+  text-align: right;
+}
+
+.clock {
+  font-size: clamp(46px, 5.4vw, 108px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+}
+
+.date-line {
+  margin-top: 10px;
+  font-size: clamp(15px, 1.15vw, 24px);
+}
+
+.hijri-line {
+  margin-top: 4px;
+  font-size: clamp(14px, 1vw, 21px);
+}
+
+.content-grid {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.75fr);
+  gap: clamp(16px, 1.5vw, 28px);
+}
+
+.prayer-card,
+.next-card,
+.info-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--panel), rgba(7, 28, 22, 0.95));
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.prayer-card {
+  min-height: 0;
+  padding: clamp(18px, 1.6vw, 32px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 14px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+}
+
+.status {
+  color: var(--muted);
+  font-size: clamp(12px, 0.9vw, 17px);
+}
+
+.status.ok {
+  color: var(--success);
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.prayer-table {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.prayer-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  align-items: center;
+  padding: 0 clamp(16px, 1.6vw, 30px);
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(21px, 2vw, 39px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.prayer-row:last-child {
+  border-bottom: 0;
+}
+
+.table-head {
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.035);
+  font-size: clamp(14px, 1.1vw, 21px);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.prayer-name {
+  color: var(--accent);
+}
+
+.prayer-row.next {
+  background: linear-gradient(90deg, var(--accent-soft), rgba(215, 183, 106, 0.05));
+  box-shadow: inset 6px 0 0 var(--accent);
+}
+
+.prayer-row.next::after {
+  content: "NEXT";
+  justify-self: end;
+  color: var(--accent);
+  font-size: clamp(10px, 0.75vw, 15px);
+  letter-spacing: 0.12em;
+}
+
+.prayer-row.next {
+  grid-template-columns: 1.3fr 1fr 1fr auto;
+}
+
+.jummah {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(12px, 1vw, 18px) clamp(16px, 1.6vw, 30px);
+  border-radius: 16px;
+  background: rgba(215, 183, 106, 0.1);
+  border: 1px solid rgba(215, 183, 106, 0.28);
+  font-size: clamp(18px, 1.6vw, 30px);
+}
+
+.side-column {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 1.35fr 0.65fr;
+  gap: clamp(16px, 1.5vw, 28px);
+}
+
+.next-card,
+.info-card {
+  padding: clamp(20px, 2vw, 38px);
+}
+
+.next-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.next-card h2 {
+  margin-top: 12px;
+  color: var(--accent);
+  font-size: clamp(36px, 4.2vw, 80px);
+}
+
+.next-time {
+  margin-top: 6px;
+  font-size: clamp(26px, 2.6vw, 52px);
+  font-weight: 700;
+}
+
+.countdown-label {
+  margin: auto 0 8px;
+  color: var(--muted);
+  font-size: clamp(14px, 1.1vw, 22px);
+}
+
+.countdown {
+  font-size: clamp(34px, 4vw, 76px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sunrise-time {
+  margin-top: 8px;
+  color: var(--accent);
+  font-size: clamp(38px, 4vw, 78px);
+  font-weight: 800;
+}
+
+.small-copy {
+  margin: 10px 0 0;
+  font-size: clamp(13px, 1vw, 20px);
+  line-height: 1.45;
+}
+
+.ticker-wrap {
+  min-height: 62px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(6, 23, 19, 0.88);
+}
+
+.ticker-label {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  padding: 0 22px;
+  background: var(--accent);
+  color: #162017;
+  font-size: clamp(12px, 0.9vw, 17px);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.ticker-window {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker {
+  display: inline-block;
+  padding-left: 100%;
+  font-size: clamp(17px, 1.4vw, 27px);
+  font-weight: 700;
+  animation: ticker-scroll 28s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@media (max-aspect-ratio: 4/3) {
+  html,
+  body {
+    overflow: auto;
+  }
+
+  .screen {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .header,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clock-panel {
+    text-align: left;
+  }
+
+  .side-column {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}
