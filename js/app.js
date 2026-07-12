@@ -66,7 +66,92 @@ function to12Hour(time24) {
   const displayHour = hours % 12 || 12;
   return `${displayHour}:${String(minutes).padStart(2, "0")} ${suffix}`;
 }
+let slideshowTimer;
+let slideshowData = {
+  prayerDuration: 30,
+  slides: []
+};
 
+const sleep = (milliseconds) =>
+  new Promise((resolve) => window.setTimeout(resolve, milliseconds));
+
+function showStageSlide(elementId) {
+  document.querySelectorAll(".stage-slide").forEach((slide) => {
+    slide.classList.remove("active");
+  });
+
+  document.getElementById(elementId)?.classList.add("active");
+}
+
+async function startSlideshow() {
+  window.clearTimeout(slideshowTimer);
+
+  const prayerSlide = document.getElementById("prayerSlide");
+  const flyerImage = document.getElementById("flyerImage");
+
+  if (!prayerSlide || !flyerImage) {
+    console.warn("Slideshow elements were not found.");
+    return;
+  }
+
+  const runCycle = async () => {
+    showStageSlide("prayerSlide");
+
+    await sleep(
+      Math.max(5, Number(slideshowData.prayerDuration || 30)) * 1000
+    );
+
+    for (const slide of slideshowData.slides) {
+      if (!slide.image) continue;
+
+      await preloadImage(slide.image);
+
+      flyerImage.src = slide.image;
+      flyerImage.alt = slide.alt || "Mosque announcement";
+
+      showStageSlide("flyerSlide");
+
+      await sleep(Math.max(5, Number(slide.duration || 10)) * 1000);
+    }
+
+    runCycle();
+  };
+
+  runCycle();
+}
+
+function preloadImage(source) {
+  return new Promise((resolve) => {
+    const image = new Image();
+
+    image.onload = resolve;
+    image.onerror = () => {
+      console.warn(`Could not load slideshow image: ${source}`);
+      resolve();
+    };
+
+    image.src = source;
+  });
+}
+
+async function loadSlideshow() {
+  try {
+    slideshowData = await loadJson("data/slides.json");
+
+    if (!Array.isArray(slideshowData.slides)) {
+      slideshowData.slides = [];
+    }
+
+    if (slideshowData.slides.length > 0) {
+      startSlideshow();
+    } else {
+      showStageSlide("prayerSlide");
+    }
+  } catch (error) {
+    console.warn("Slideshow configuration could not be loaded.", error);
+    showStageSlide("prayerSlide");
+  }
+}
 function parseDisplayTime(timeText, baseDate = getNow()) {
   if (!timeText) return null;
 
@@ -293,6 +378,7 @@ async function init() {
     }
 
     await loadAnnouncements();
+    await loadSlideshow();
     await refreshPrayerData();
 
     updateClock();
