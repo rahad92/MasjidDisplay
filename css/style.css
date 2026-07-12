@@ -1,20 +1,30 @@
 :root {
-  --bg: #071830;
-  --panel: rgba(10, 28, 54, 0.95);
-  --panel-2: rgba(15, 40, 72, 0.95);
-  --line: rgba(255, 255, 255, 0.14);
-  --text: #f4f8ff;
-  --muted: #a9bfd8;
-  --accent: #4f8fcf;
-  --accent-soft: rgba(79, 143, 207, 0.16);
-  --success: #58c2b6;
-  --danger: #f28b8b;
-  --shadow: 0 20px 70px rgba(0, 8, 20, 0.35);
+  --bg: #070b0a;
+
+  --panel: rgba(22, 29, 27, 0.96);
+  --panel-2: rgba(30, 39, 36, 0.96);
+
+  --line: rgba(0, 166, 147, 0.28);
+
+  --text: #f5f7f6;
+  --muted: #b6c4c0;
+
+  --accent: #00a693;
+  --accent-strong: #00b9a4;
+  --accent-soft: rgba(0, 166, 147, 0.16);
+
+  --gold: #ddb459;
+  --gold-light: #ecd082;
+  --gold-soft: rgba(221, 180, 89, 0.16);
+
+  --success: #66d6ac;
+  --danger: #ff9287;
+
+  --shadow: 0 18px 55px rgba(0, 0, 0, 0.42);
 }
 
 * {
   box-sizing: border-box;
-  object-fit: cover;
 }
 
 html,
@@ -30,9 +40,22 @@ body {
 
 body {
   background:
-    radial-gradient(circle at 15% 5%, rgba(79, 143, 207, 0.26), transparent 35%),
-    radial-gradient(circle at 90% 0%, rgba(88, 194, 182, 0.14), transparent 30%),
-    linear-gradient(145deg, #071830, #0d2140 58%, #0a1730);
+    radial-gradient(
+      circle at 12% 5%,
+      rgba(0, 166, 147, 0.18),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 88% 0%,
+      rgba(221, 180, 89, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(
+      145deg,
+      #050807,
+      #0c1210 55%,
+      #07100d
+    );
 }
 
 .screen {
@@ -65,7 +88,7 @@ h2 {
 
 .eyebrow {
   margin: 0;
-  color: var(--accent);
+  color: var(--gold);
   font-size: clamp(12px, 0.9vw, 18px);
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -74,14 +97,18 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-width: 0;
-}
+  width: fit-content;
+  padding: 10px 18px;
+  border-radius: 16px;
 
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(221, 180, 89, 0.35);
+}
 #mosqueLogo {
   display: block;
   width: auto;
-  height: clamp(85px, 8vw, 145px);
-  max-width: min(52vw, 700px);
+  height: clamp(82px, 7vw, 125px);
+  max-width: min(48vw, 650px);
   object-fit: contain;
 }
 .subtitle,
@@ -120,22 +147,24 @@ h2 {
 
 .content-grid {
   min-height: 0;
-  height: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.75fr);
   gap: clamp(16px, 1.5vw, 28px);
 }
 
-.display-stage {
-  align-self: stretch;
-}
-
 .prayer-card,
 .next-card,
-.info-card {
+.info-card,
+.flyer-slide {
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--panel), rgba(7, 24, 44, 0.95));
-  border-radius: 24px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(29, 38, 35, 0.97),
+      rgba(13, 19, 17, 0.98)
+    );
+
+  border-radius: 22px;
   box-shadow: var(--shadow);
 }
 
@@ -171,12 +200,10 @@ h2 {
   min-height: 0;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
+  border-color: rgba(0, 166, 147, 0.28);
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
-   width: 100%;
-  height: 100%;
-  min-height: 0;
 }
 
 .prayer-row {
@@ -185,18 +212,11 @@ h2 {
   align-items: center;
   padding: 0 clamp(16px, 1.6vw, 30px);
   border-bottom: 1px solid var(--line);
+  border-bottom-color: rgba(0, 166, 147, 0.18);
   font-size: clamp(26px, 2.4vw, 46px);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   transition: background 180ms ease, transform 180ms ease;
-  min-height: 0;
-}
-
-.prayer-row:not(.table-head) > div:nth-child(2),
-.prayer-row:not(.table-head) > div:nth-child(3) {
-  font-size: clamp(28px, 2.7vw, 50px);
-  font-weight: 800;
-  letter-spacing: -0.01em;
 }
 
 .prayer-row:last-child {
@@ -204,32 +224,32 @@ h2 {
 }
 
 .table-head {
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(0, 166, 147, 0.08);
+  color: var(--gold-light);
   font-size: clamp(14px, 1.1vw, 21px);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
 .prayer-name {
-  color: var(--accent);
+  color: var(--accent-strong);
+  font-weight: 800;
 }
 
 .prayer-row.next {
-  background: linear-gradient(90deg, var(--accent-soft), rgba(79, 143, 207, 0.05));
-  box-shadow: inset 6px 0 0 var(--accent);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 166, 147, 0.22),
+      rgba(0, 166, 147, 0.06)
+    );
+
+  box-shadow:
+    inset 7px 0 0 var(--accent);
 }
 
 .prayer-row.next::after {
-  content: "NEXT";
-  justify-self: end;
-  color: var(--accent);
-  font-size: clamp(10px, 0.75vw, 15px);
-  letter-spacing: 0.12em;
-}
-
-.prayer-row.next {
-  grid-template-columns: 1.3fr 1fr 1fr auto;
+  color: var(--gold-light);
 }
 
 .jummah {
@@ -238,9 +258,21 @@ h2 {
   align-items: center;
   padding: clamp(12px, 1vw, 18px) clamp(16px, 1.6vw, 30px);
   border-radius: 16px;
-  background: rgba(79, 143, 207, 0.12);
-  border: 1px solid rgba(79, 143, 207, 0.28);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(221, 180, 89, 0.18),
+      rgba(221, 180, 89, 0.07)
+    );
+
+  border: 1px solid rgba(221, 180, 89, 0.42);
   font-size: clamp(18px, 1.6vw, 30px);
+}
+.jummah span {
+  color: var(--gold-light);
+}
+.jummah strong {
+  color: var(--text);
 }
 .display-stage {
   position: relative;
@@ -358,7 +390,10 @@ h2 {
   font-size: clamp(38px, 4vw, 78px);
   font-weight: 800;
 }
-
+.next-card h2,
+.sunrise-time {
+  color: var(--accent-strong);
+}
 .small-copy {
   margin: 10px 0 0;
   font-size: clamp(13px, 1vw, 20px);
@@ -373,7 +408,8 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(7, 24, 44, 0.9);
+  border-color: rgba(0, 166, 147, 0.32);
+  background: rgba(7, 12, 10, 0.94);
 }
 
 .ticker-label {
@@ -382,7 +418,7 @@ h2 {
   place-items: center;
   padding: 0 22px;
   background: var(--accent);
-  color: #f7fbff;
+  color: #04110e;
   font-size: clamp(12px, 0.9vw, 17px);
   font-weight: 900;
   letter-spacing: 0.1em;
