@@ -163,7 +163,7 @@ h2 {
   align-items: center;
   padding: 0 clamp(16px, 1.6vw, 30px);
   border-bottom: 1px solid var(--line);
-  font-size: clamp(21px, 2vw, 39px);
+  font-size: clamp(26px, 2.4vw, 46px);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   transition: background 180ms ease, transform 180ms ease;
