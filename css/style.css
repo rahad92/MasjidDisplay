@@ -70,8 +70,9 @@ body {
 .header {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 30px;
+  gap: 22px;
   align-items: center;
+  padding-block: 2px;
 }
 
 h1 {
@@ -89,7 +90,7 @@ h2 {
 .eyebrow {
   margin: 0;
   color: var(--gold);
-  font-size: clamp(12px, 0.9vw, 18px);
+  font-size: clamp(12px, 0.9vw, 32px);
   font-weight: 800;
   letter-spacing: 0.16em;
 }
@@ -98,17 +99,16 @@ h2 {
   align-items: center;
   justify-content: flex-start;
   width: fit-content;
-  padding: 10px 18px;
-  border-radius: 16px;
-
+  padding: 8px 14px;
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.94);
   border: 1px solid rgba(221, 180, 89, 0.35);
 }
 #mosqueLogo {
   display: block;
   width: auto;
-  height: clamp(82px, 7vw, 125px);
-  max-width: min(48vw, 650px);
+  height: clamp(70px, 6vw, 110px);
+  max-width: min(46vw, 600px);
   object-fit: contain;
 }
 .subtitle,
@@ -128,7 +128,7 @@ h2 {
 }
 
 .clock {
-  font-size: clamp(60px,6vw,130px);
+  font-size: clamp(54px, 5.3vw, 118px);
   font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 0.95;
@@ -148,8 +148,9 @@ h2 {
 .content-grid {
   min-height: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.75fr);
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.72fr);
   gap: clamp(16px, 1.5vw, 28px);
+  align-items: stretch;
 }
 
 .prayer-card,
@@ -173,7 +174,8 @@ h2 {
   padding: clamp(18px, 1.6vw, 32px);
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 14px;
+  gap: 16px;
+  min-height: 100%;
 }
 
 .section-heading {
@@ -213,8 +215,8 @@ h2 {
   padding: 0 clamp(16px, 1.6vw, 30px);
   border-bottom: 1px solid var(--line);
   border-bottom-color: rgba(0, 166, 147, 0.18);
-  font-size: clamp(26px, 2.4vw, 46px);
-  font-weight: 700;
+  font-size: clamp(26px, 2.4vw, 52px);
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
   transition: background 180ms ease, transform 180ms ease;
 }
@@ -337,7 +339,7 @@ h2 {
 .side-column {
   min-height: 0;
   display: grid;
-  grid-template-rows: 1.35fr 0.65fr;
+  grid-template-rows: 1fr 0.85fr;
   gap: clamp(16px, 1.5vw, 28px);
 }
 
@@ -384,15 +386,48 @@ h2 {
   justify-content: center;
 }
 
-.sunrise-time {
-  margin-top: 8px;
-  color: var(--accent);
-  font-size: clamp(38px, 4vw, 78px);
-  font-weight: 800;
-}
 .next-card h2,
 .sunrise-time {
   color: var(--accent-strong);
+}
+.sun-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sun-times {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: center;
+  gap: clamp(14px, 1.4vw, 26px);
+}
+
+.sun-time-item {
+  min-width: 0;
+  text-align: center;
+}
+
+.sun-divider {
+  width: 1px;
+  height: 75%;
+  min-height: 70px;
+  background: rgba(0, 166, 147, 0.3);
+}
+
+.sun-time-value {
+  margin-top: 8px;
+  color: var(--accent-strong);
+  font-size: clamp(27px, 2.8vw, 64px);
+  font-weight: 800;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.sun-card .small-copy {
+  margin-top: clamp(12px, 1.2vw, 20px);
+  text-align: center;
 }
 .small-copy {
   margin: 10px 0 0;

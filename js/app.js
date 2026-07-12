@@ -226,6 +226,7 @@ function renderTimes(adhan, iqamah) {
   }
 
   $("Sunrise-adhan").textContent = adhan.Sunrise ?? "--:--";
+  $("Sunset-adhan").textContent = adhan.Sunset ?? "--:--";
   $("Jumuah-iqamah").textContent = iqamah.Jumuah ?? "--:--";
 
   prayerSchedule = PRAYERS.map((name) => ({
@@ -322,6 +323,7 @@ async function refreshPrayerData() {
     const adhan = {
       Fajr: to12Hour(timings24.Fajr),
       Sunrise: to12Hour(timings24.Sunrise),
+      Sunset: to12Hour(timings24.Sunset),
       Dhuhr: to12Hour(timings24.Dhuhr),
       Asr: to12Hour(timings24.Asr),
       Maghrib: to12Hour(timings24.Maghrib),
