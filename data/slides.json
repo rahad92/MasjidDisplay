@@ -1,0 +1,15 @@
+{
+  "prayerDuration": 30,
+  "slides": [
+    {
+      "image": "assets/slides/ICDC.jpg",
+      "duration": 10,
+      "alt": "ICDC Front View"
+    },
+    {
+      "image": "assets/slides/design.png",
+      "duration": 10,
+      "alt": "Future Plans for ICDC"
+    }
+  ]
+}

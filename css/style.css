@@ -1,19 +1,20 @@
 :root {
-  --bg: #061713;
-  --panel: rgba(13, 42, 34, 0.92);
-  --panel-2: rgba(19, 56, 46, 0.92);
-  --line: rgba(255, 255, 255, 0.12);
-  --text: #f6fbf8;
-  --muted: #b9cdc5;
-  --accent: #d7b76a;
-  --accent-soft: rgba(215, 183, 106, 0.16);
-  --success: #78d6a0;
-  --danger: #ff9a8d;
-  --shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+  --bg: #071830;
+  --panel: rgba(10, 28, 54, 0.95);
+  --panel-2: rgba(15, 40, 72, 0.95);
+  --line: rgba(255, 255, 255, 0.14);
+  --text: #f4f8ff;
+  --muted: #a9bfd8;
+  --accent: #4f8fcf;
+  --accent-soft: rgba(79, 143, 207, 0.16);
+  --success: #58c2b6;
+  --danger: #f28b8b;
+  --shadow: 0 20px 70px rgba(0, 8, 20, 0.35);
 }
 
 * {
   box-sizing: border-box;
+  object-fit: cover;
 }
 
 html,
@@ -29,9 +30,9 @@ body {
 
 body {
   background:
-    radial-gradient(circle at 15% 5%, rgba(33, 113, 83, 0.28), transparent 35%),
-    radial-gradient(circle at 90% 0%, rgba(215, 183, 106, 0.12), transparent 30%),
-    linear-gradient(145deg, #061713, #0a211b 58%, #071812);
+    radial-gradient(circle at 15% 5%, rgba(79, 143, 207, 0.26), transparent 35%),
+    radial-gradient(circle at 90% 0%, rgba(88, 194, 182, 0.14), transparent 30%),
+    linear-gradient(145deg, #071830, #0d2140 58%, #0a1730);
 }
 
 .screen {
@@ -106,16 +107,21 @@ h2 {
 
 .content-grid {
   min-height: 0;
+  height: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.75fr);
   gap: clamp(16px, 1.5vw, 28px);
+}
+
+.display-stage {
+  align-self: stretch;
 }
 
 .prayer-card,
 .next-card,
 .info-card {
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--panel), rgba(7, 28, 22, 0.95));
+  background: linear-gradient(180deg, var(--panel), rgba(7, 24, 44, 0.95));
   border-radius: 24px;
   box-shadow: var(--shadow);
 }
@@ -155,6 +161,9 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
+   width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
 .prayer-row {
@@ -167,6 +176,14 @@ h2 {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   transition: background 180ms ease, transform 180ms ease;
+  min-height: 0;
+}
+
+.prayer-row:not(.table-head) > div:nth-child(2),
+.prayer-row:not(.table-head) > div:nth-child(3) {
+  font-size: clamp(28px, 2.7vw, 50px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .prayer-row:last-child {
@@ -186,7 +203,7 @@ h2 {
 }
 
 .prayer-row.next {
-  background: linear-gradient(90deg, var(--accent-soft), rgba(215, 183, 106, 0.05));
+  background: linear-gradient(90deg, var(--accent-soft), rgba(79, 143, 207, 0.05));
   box-shadow: inset 6px 0 0 var(--accent);
 }
 
@@ -208,11 +225,70 @@ h2 {
   align-items: center;
   padding: clamp(12px, 1vw, 18px) clamp(16px, 1.6vw, 30px);
   border-radius: 16px;
-  background: rgba(215, 183, 106, 0.1);
-  border: 1px solid rgba(215, 183, 106, 0.28);
+  background: rgba(79, 143, 207, 0.12);
+  border: 1px solid rgba(79, 143, 207, 0.28);
   font-size: clamp(18px, 1.6vw, 30px);
 }
+.display-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 24px;
+}
 
+.stage-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 500ms ease, visibility 500ms ease;
+}
+
+.stage-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Make the prayer display fill the complete slideshow section */
+#prayerSlide {
+  display: block;
+}
+
+#prayerSlide .prayer-card {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+}
+
+/* Make the flyer area fill the complete section */
+.flyer-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #071812;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.flyer-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 24px;
+}
 .side-column {
   min-height: 0;
   display: grid;
@@ -284,7 +360,7 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(6, 23, 19, 0.88);
+  background: rgba(7, 24, 44, 0.9);
 }
 
 .ticker-label {
@@ -293,7 +369,7 @@ h2 {
   place-items: center;
   padding: 0 22px;
   background: var(--accent);
-  color: #162017;
+  color: #f7fbff;
   font-size: clamp(12px, 0.9vw, 17px);
   font-weight: 900;
   letter-spacing: 0.1em;
