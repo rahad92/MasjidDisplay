@@ -69,7 +69,20 @@ h2 {
   font-weight: 800;
   letter-spacing: 0.16em;
 }
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+}
 
+#mosqueLogo {
+  display: block;
+  width: auto;
+  height: clamp(85px, 8vw, 145px);
+  max-width: min(52vw, 700px);
+  object-fit: contain;
+}
 .subtitle,
 .date-line,
 .hijri-line,
@@ -87,7 +100,7 @@ h2 {
 }
 
 .clock {
-  font-size: clamp(46px, 5.4vw, 108px);
+  font-size: clamp(60px,6vw,130px);
   font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 0.95;

@@ -281,8 +281,16 @@ async function init() {
   try {
     config = await loadJson("config/config.json");
 
-    $("mosqueName").textContent = config.mosqueName;
-    $("mosqueSubtitle").textContent = config.mosqueSubtitle ?? "";
+    const mosqueNameElement = $("mosqueName");
+    const mosqueSubtitleElement = $("mosqueSubtitle");
+
+    if (mosqueNameElement) {
+      mosqueNameElement.textContent = config.mosqueName;
+    }
+
+    if (mosqueSubtitleElement) {
+      mosqueSubtitleElement.textContent = config.mosqueSubtitle ?? "";
+    }
 
     await loadAnnouncements();
     await refreshPrayerData();
