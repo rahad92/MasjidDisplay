@@ -502,3 +502,232 @@ h2 {
     grid-template-rows: auto;
   }
 }
+/* =========================================================
+   FIRE TV / 16:9 TELEVISION SAFETY OVERRIDES
+   Add this entire block at the END of style.css
+   ========================================================= */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  min-height: 0;
+  padding: clamp(12px, 1.2vw, 24px);
+  gap: clamp(10px, 1vw, 18px);
+  grid-template-rows: minmax(90px, auto) minmax(0, 1fr) 54px;
+}
+
+/* Keep header from consuming too much vertical space */
+.header {
+  min-height: 0;
+  gap: 20px;
+}
+
+.logo-container {
+  min-width: 0;
+  max-height: 110px;
+  padding: 5px 12px;
+}
+
+#mosqueLogo {
+  width: auto;
+  height: clamp(70px, 7vh, 105px);
+  max-width: min(46vw, 620px);
+  object-fit: contain;
+}
+
+/* Compact clock and dates */
+.clock {
+  font-size: clamp(42px, 6.2vh, 76px);
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.date-line {
+  margin-top: 5px;
+  font-size: clamp(13px, 1.7vh, 18px);
+  white-space: nowrap;
+}
+
+.hijri-line {
+  margin-top: 2px;
+  font-size: clamp(12px, 1.5vh, 16px);
+  white-space: nowrap;
+}
+
+/* Main area must be allowed to shrink */
+.content-grid {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  gap: clamp(10px, 1vw, 18px);
+  grid-template-columns: minmax(0, 1.72fr) minmax(280px, 0.68fr);
+}
+
+.display-stage,
+.stage-slide,
+#prayerSlide,
+#prayerSlide .prayer-card {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Prayer card */
+.prayer-card {
+  padding: clamp(12px, 1.1vw, 20px);
+  gap: 8px;
+  overflow: hidden;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.section-heading h2 {
+  font-size: clamp(22px, 3vh, 32px);
+}
+
+.eyebrow {
+  font-size: clamp(10px, 1.3vh, 14px);
+}
+
+.status {
+  font-size: clamp(10px, 1.25vh, 14px);
+  white-space: nowrap;
+}
+
+/* Prayer table fills the remaining space */
+.prayer-table {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  grid-template-rows: 0.72fr repeat(5, 1fr);
+}
+
+.prayer-row {
+  min-height: 0;
+  padding: 0 clamp(12px, 1.25vw, 24px);
+  font-size: clamp(21px, 3.4vh, 36px);
+  line-height: 1;
+  white-space: nowrap;
+  grid-template-columns: minmax(110px, 1.25fr) minmax(95px, 1fr) minmax(95px, 1fr);
+}
+
+.prayer-row.next {
+  grid-template-columns:
+    minmax(105px, 1.2fr)
+    minmax(90px, 1fr)
+    minmax(90px, 1fr)
+    auto;
+}
+
+.table-head {
+  font-size: clamp(12px, 1.75vh, 18px);
+}
+
+.prayer-row.next::after {
+  font-size: clamp(8px, 1.1vh, 12px);
+}
+
+.jummah {
+  padding: clamp(8px, 1vh, 12px) clamp(12px, 1.25vw, 24px);
+  font-size: clamp(17px, 2.3vh, 25px);
+  min-height: 0;
+}
+
+/* Compact right-side cards */
+.side-column {
+  min-height: 0;
+  height: 100%;
+  gap: clamp(10px, 1vw, 18px);
+  grid-template-rows: minmax(0, 0.95fr) minmax(0, 0.75fr);
+}
+
+.next-card,
+.info-card {
+  min-height: 0;
+  overflow: hidden;
+  padding: clamp(12px, 1.2vw, 22px);
+}
+
+.next-card h2 {
+  margin-top: 4px;
+  font-size: clamp(32px, 5.2vh, 56px);
+  line-height: 1;
+}
+
+.next-time {
+  margin-top: 3px;
+  font-size: clamp(20px, 3vh, 32px);
+  line-height: 1;
+}
+
+.countdown-label {
+  margin: auto 0 3px;
+  font-size: clamp(12px, 1.7vh, 17px);
+}
+
+.countdown {
+  font-size: clamp(28px, 4.5vh, 48px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Sunrise and sunset */
+.sun-times {
+  gap: clamp(6px, 0.7vw, 14px);
+}
+
+.sun-time-value {
+  margin-top: 5px;
+  font-size: clamp(22px, 3.2vh, 34px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.sun-divider {
+  min-height: 45px;
+  height: 65%;
+}
+
+.sun-card .small-copy {
+  margin-top: 8px;
+  font-size: clamp(10px, 1.35vh, 14px);
+  line-height: 1.25;
+}
+
+/* Footer ticker */
+.ticker-wrap {
+  min-height: 0;
+  height: 54px;
+}
+
+.ticker-label {
+  padding: 0 14px;
+  font-size: clamp(10px, 1.25vh, 13px);
+}
+
+.ticker {
+  font-size: clamp(15px, 2vh, 21px);
+}
+
+/* Flyer must remain completely inside the slide area */
+.flyer-slide {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.flyer-slide img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
